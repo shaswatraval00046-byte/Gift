@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For My Valentine ❤️</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<div id="floatingNames"></div>
   <div class="card">
     <h1>Hey Beautiful ❤️</h1>
 
@@ -25,8 +27,10 @@
 
 
   </div>
+  <audio id="bgMusic" src="bg.mp3" loop></audio>
 <audio id="yesMusic" src="yes.mp3" loop></audio>
 <audio id="errorSound" src="no.mp3"></audio>
+<div id="confetti"></div>
 
 <script>
 const noBtn = document.getElementById("noBtn");
@@ -36,30 +40,68 @@ const loveImage = document.getElementById("loveImage");
 const yesMusic = document.getElementById("yesMusic");
 const errorSound = document.getElementById("errorSound");
 
+const confetti = document.getElementById("confetti");
+const floatingNames = document.getElementById("floatingNames");
+
+// CHANGE THESE TO HER REAL NAME + NICKNAMES
+const names = [
+  "CHANDRIKA",
+  "Babyluu",
+  "Honey talli",
+  "My gawar girl",
+  "My kuchupuchu"
+];
+
+// Create floating names
+names.forEach(name => {
+  const span = document.createElement("span");
+  span.innerText = name;
+  span.className = "floatName";
+
+  // Random position
+  span.style.left = Math.random() * 100 + "vw";
+
+  // Random speed
+  span.style.animationDuration = 10 + Math.random() * 10 + "s";
+
+  // Random font size
+  span.style.fontSize = 16 + Math.random() * 20 + "px";
+
+  floatingNames.appendChild(span);
+});
+
 noBtn.addEventListener("click", () => {
-  // Play error sound
   errorSound.currentTime = 0;
   errorSound.play();
+  const bgMusic = document.getElementById("bgMusic");
 
-  // Random position for floating NO button
+// Start background music on first interaction
+document.body.addEventListener("click", () => {
+  bgMusic.volume = 0.4;
+  bgMusic.play();
+}, { once: true });
+
+
   const x = Math.random() * 250 - 125;
   const y = Math.random() * 250 - 125;
 
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  noBtn.style.transform = `translate(${x}px, ${y}px) rotate(20deg)`;
 });
-
 yesBtn.addEventListener("click", () => {
-  // Play romantic song
+  bgMusic.pause();
   yesMusic.play();
 
-  // Show love image
   loveImage.style.display = "block";
 
-  // Hide buttons
   yesBtn.style.display = "none";
   noBtn.style.display = "none";
+
+  confetti.innerHTML = "🎉 💖 🎊 💕 🎉 💗 🎊 💘";
+  confetti.style.fontSize = "40px";
 });
 </script>
+
+
 
 
 
