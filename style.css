@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: pink;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, sans-serif;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  width: 350px;
+}
+
+h1 {
+  color: #e91e63;
+}
+
+p {
+  font-size: 18px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  background: #e91e63;
+  color: white;
+  cursor: pointer;
+  margin: 10px;
+  transition: 0.3s;
+}
+
+#noBtn {
+  background: gray;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#loveImage {
+  margin-top: 20px;
+  width: 250px;
+  display: none;
+  border-radius: 15px;
+}
+#noImage {
+  margin-top: 15px;
+  width: 200px;
+  display: none;
+  border-radius: 15px;
+}
+
