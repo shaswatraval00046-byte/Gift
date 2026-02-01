@@ -34,15 +34,16 @@
 
 <script>
   function sendResponse(value) {
+  const data = new URLSearchParams();
+  data.append("entry.2054187363", value); // replace with your FIELD
+
   fetch("https://docs.google.com/forms/u/0/d/e/1FAIpQLSfFeQDjJBQCtMpjC-4DmyBYFkYsGijejQzn8XqztvkPtfZYsA/formResponse", {
     method: "POST",
     mode: "no-cors",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body: "entry.2054187363_sentinel" + encodeURIComponent(value)
+    body: data
   });
 }
+
 
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
